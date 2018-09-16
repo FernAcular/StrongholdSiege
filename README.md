@@ -2,4 +2,4 @@
 
 # StrongholdSiege
 
-This is a game.
+This is a strategy game where the objective is to conquer all strongholds on the map.
