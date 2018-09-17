@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
 
-    Transform target;
+    public Transform target;
 
     public float speed = 1f;
 
 	// Use this for initialization
 	void Start () {
-        target = transform;
+        if (target == null) target = transform;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log(target.position);
         transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
 

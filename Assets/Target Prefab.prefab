@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 136725951796938336}
   - component: {fileID: 114119758629030412}
   m_Layer: 0
-  m_Name: Target Cylinder
+  m_Name: Target Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de114731d1409f4e9eda40803c06c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 0}
 --- !u!136 &136725951796938336
 CapsuleCollider:
   m_ObjectHideFlags: 1
