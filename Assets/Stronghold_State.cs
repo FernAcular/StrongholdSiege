@@ -2,31 +2,20 @@
 
 public class Stronghold_State : MonoBehaviour {
 
-    //Player color and name Properties
+    public int magnitude = 0;
     public Player player;
 
-    //Stronghold magnitude
-    public int magnitude = 0;
-
     //Rendering Component contains Material Color
-    public Renderer rend;
+    private Renderer rend;
 
     void Start() {
-
         //Get Rendering Component
         rend = GetComponent<Renderer>();
 
-        //Instantiate Color and Magnitude
-        if (player != null)
-        {
-            Debug.Log("Changing Color");
+        //Instantiate Color
+        if (player != null) {
             rend.material.color = player.color;
         }
-        else
-        {
-            Debug.Log("Player doesnt exist");
-        }
-
     }
 
 }
