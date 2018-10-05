@@ -6,17 +6,35 @@ public class GameEngine : MonoBehaviour {
     private Transform source;
 
 	public void RegisterStrongholdClick(Transform selected) {
-        if (source == null) {
+
+        ObjectOwnerState selectedInfo = selected.GetComponent<ObjectOwnerState>();
+
+        if (source == null && selectedInfo.player!=null) {
             // If source is not yet selected, selected stronghold is the source
             source = selected;
-        } else {
+
+            //Turn Source StrongHold Green
+            selectedInfo.rend.material.shader = Shader.Find("Outlined/UltimateOutline");
+            selectedInfo.rend.material.SetColor("_FirstOutlineColor", Color.green);
+            selectedInfo.rend.material.SetColor("_SecondOutlineColor", Color.green);
+
+        } else if(source){
+
             ObjectOwnerState sourceInfo = source.GetComponent<ObjectOwnerState>();
+
+            //Turn Selected StrongHold Red
+            selectedInfo.rend.material.shader = Shader.Find("Outlined/UltimateOutline");
+            selectedInfo.rend.material.SetColor("_FirstOutlineColor", Color.red);
+            selectedInfo.rend.material.SetColor("_SecondOutlineColor", Color.red);
 
             // If source is owned by a player, and not the same as target, send unit
             if (sourceInfo.player != null && source != selected) {
                 SendUnit(sourceInfo, selected);
             }
 
+            //Turn Source Back to Neutral
+            sourceInfo.rend.material.shader = Shader.Find("Standard");
+            
             source = null;
         }
     }

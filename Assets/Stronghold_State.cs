@@ -2,6 +2,7 @@
 
 public class Stronghold_State : MonoBehaviour {
 
+   
     public int magnitude = 0;
     public Player player;
 

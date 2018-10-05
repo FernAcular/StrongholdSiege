@@ -6,7 +6,7 @@ public class ObjectOwnerState : MonoBehaviour {
     public Player player;
 
     // Rendering Component contains Material Color
-    private Renderer rend;
+    public Renderer rend;
 
     void Start() {
         // Get Rendering Component
