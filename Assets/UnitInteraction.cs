@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class UnitInteraction : MonoBehaviour {
 
@@ -16,20 +17,25 @@ public class UnitInteraction : MonoBehaviour {
         ObjectOwnerState unitInfo = unit.gameObject.GetComponent<ObjectOwnerState>();
         ObjectOwnerState strongholdInfo = GetComponent<ObjectOwnerState>();
 
+        int newMagnitude;
+        int unitMagnitude = unitInfo.GetMagnitude();
+        int strongholdMagnitude = strongholdInfo.GetMagnitude();
+
         if (strongholdInfo.player == unitInfo.player) {
             // Reinforcements arrived!
-            strongholdInfo.magnitude += unitInfo.magnitude;
+            newMagnitude = strongholdMagnitude + unitMagnitude;
         } else {
             // Stronghold is being attacked!
-            strongholdInfo.magnitude -= unitInfo.magnitude;
+            newMagnitude = strongholdMagnitude - unitMagnitude;
 
-            // This stronghold is lost to the other player
-            if (strongholdInfo.magnitude < 0) {
+            // If this stronghold is lost to the other player
+            if (newMagnitude < 0) {
                 strongholdInfo.player = unitInfo.player;
-                strongholdInfo.magnitude *= -1;
                 strongholdInfo.UpdateColor();
             }
         }
+
+        strongholdInfo.SetMagnitude(Math.Abs(newMagnitude));
 
         // Remove unit from scene
         Destroy(unit.gameObject);

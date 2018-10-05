@@ -339,11 +339,17 @@ Prefab:
     - target: {fileID: 114002552589318198, guid: b2ad037e6b8e6cd4c9a6b65cbd492ee6,
         type: 2}
       propertyPath: magnitude
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2ad037e6b8e6cd4c9a6b65cbd492ee6, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &317727230 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114002552589318198, guid: b2ad037e6b8e6cd4c9a6b65cbd492ee6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1366685024}
+  m_Script: {fileID: 11500000, guid: b4d8cf53ee9dcda4295e88ee153e8cb1, type: 3}
 --- !u!1001 &362417728
 Prefab:
   m_ObjectHideFlags: 0
@@ -507,7 +513,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c321fcbe2073c54f9ad77c9b826d222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingMagnitude: 100
   unitPrefab: {fileID: 1383276632428376, guid: 98cc1b5498bc68b49b43dc46bd733abb, type: 2}
+  startingStrongholds:
+  - {fileID: 1493975183}
+  - {fileID: 317727230}
 --- !u!4 &542851003
 Transform:
   m_ObjectHideFlags: 0
@@ -565,57 +575,6 @@ Prefab:
     - target: {fileID: 1371384740230780, guid: b2ad037e6b8e6cd4c9a6b65cbd492ee6, type: 2}
       propertyPath: m_Name
       value: Stronghold (3)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2ad037e6b8e6cd4c9a6b65cbd492ee6, type: 2}
-  m_IsPrefabAsset: 0
---- !u!1001 &1175852896
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4863264372430974, guid: b2ad037e6b8e6cd4c9a6b65cbd492ee6, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863264372430974, guid: b2ad037e6b8e6cd4c9a6b65cbd492ee6, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863264372430974, guid: b2ad037e6b8e6cd4c9a6b65cbd492ee6, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863264372430974, guid: b2ad037e6b8e6cd4c9a6b65cbd492ee6, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863264372430974, guid: b2ad037e6b8e6cd4c9a6b65cbd492ee6, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863264372430974, guid: b2ad037e6b8e6cd4c9a6b65cbd492ee6, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863264372430974, guid: b2ad037e6b8e6cd4c9a6b65cbd492ee6, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863264372430974, guid: b2ad037e6b8e6cd4c9a6b65cbd492ee6, type: 2}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1371384740230780, guid: b2ad037e6b8e6cd4c9a6b65cbd492ee6, type: 2}
-      propertyPath: m_Name
-      value: StrongHold (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114401173787051988, guid: b2ad037e6b8e6cd4c9a6b65cbd492ee6,
-        type: 2}
-      propertyPath: player
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2ad037e6b8e6cd4c9a6b65cbd492ee6, type: 2}
@@ -777,6 +736,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4868604989438432, guid: 8424896a9cf1e474bb739b700f1af8c9,
     type: 2}
   m_PrefabInternal: {fileID: 1196220903}
+--- !u!114 &1493975183 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114002552589318198, guid: b2ad037e6b8e6cd4c9a6b65cbd492ee6,
+    type: 2}
+  m_PrefabInternal: {fileID: 292027052}
+  m_Script: {fileID: 11500000, guid: b4d8cf53ee9dcda4295e88ee153e8cb1, type: 3}
 --- !u!1001 &1512288905
 Prefab:
   m_ObjectHideFlags: 0
@@ -1039,4 +1004,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c321fcbe2073c54f9ad77c9b826d222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingMagnitude: 0
   unitPrefab: {fileID: 0}
+  startingStrongholds: []
