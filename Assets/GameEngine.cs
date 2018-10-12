@@ -1,16 +1,26 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class GameEngine : MonoBehaviour {
 
+    public int startingMagnitude = 100;
     public GameObject unitPrefab;
+    public List<ObjectOwnerState> startingStrongholds;
+
     private Transform source;
 
-	public void RegisterStrongholdClick(Transform selected) {
+    void Start() {
+        foreach (ObjectOwnerState strongholdInfo in startingStrongholds) {
+            strongholdInfo.SetMagnitude(startingMagnitude);
+        }
+    }
 
+     public void RegisterStrongholdClick(Transform selected) {
         ObjectOwnerState selectedInfo = selected.GetComponent<ObjectOwnerState>();
 
-        if (source == null && selectedInfo.player!=null) {
-            // If source is not yet selected, selected stronghold is the source
+        // If source is not yet selected, selected stronghold is the source
+        if (source == null && selectedInfo.player != null) {
+
             source = selected;
 
             //Turn Source StrongHold Green
@@ -18,8 +28,7 @@ public class GameEngine : MonoBehaviour {
             selectedInfo.rend.material.SetColor("_FirstOutlineColor", Color.green);
             selectedInfo.rend.material.SetColor("_SecondOutlineColor", Color.green);
 
-        } else if(source){
-
+        } else if (source) {
             ObjectOwnerState sourceInfo = source.GetComponent<ObjectOwnerState>();
 
             //Turn Selected StrongHold Red
@@ -34,7 +43,6 @@ public class GameEngine : MonoBehaviour {
 
             //Turn Source Back to Neutral
             sourceInfo.rend.material.shader = Shader.Find("Standard");
-            
             source = null;
         }
     }
@@ -43,19 +51,19 @@ public class GameEngine : MonoBehaviour {
         // Create unit at source stronghold
         GameObject unit = Instantiate(unitPrefab, source.position, Quaternion.identity);
 
-        int strongholdMagnitude = sourceInfo.magnitude;
+        int strongholdMagnitude = sourceInfo.GetMagnitude();
         int unitMagnitude = strongholdMagnitude / 2;
 
         // Only send unit if it has a magnitude
         if (unitMagnitude > 0) {
             ObjectOwnerState unitInfo = unit.GetComponent<ObjectOwnerState>();
 
-            unitInfo.magnitude = unitMagnitude;
+            unitInfo.SetMagnitude(unitMagnitude);
             unitInfo.player = sourceInfo.player;
             unit.GetComponent<UnitState>().SetSource(source.gameObject);
             unit.GetComponent<Movement>().SetTarget(selected);
 
-            sourceInfo.magnitude -= unitMagnitude;
+            sourceInfo.SetMagnitude(strongholdMagnitude - unitMagnitude);
         }
     }
 }

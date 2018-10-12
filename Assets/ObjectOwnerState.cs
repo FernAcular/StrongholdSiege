@@ -2,8 +2,8 @@
 
 public class ObjectOwnerState : MonoBehaviour {
 
-    public int magnitude = 0;
     public Player player;
+    private int magnitude;
 
     // Rendering Component contains Material Color
     public Renderer rend;
@@ -18,5 +18,13 @@ public class ObjectOwnerState : MonoBehaviour {
         if (player != null) {
             rend.material.color = player.color;
         }
+    }
+
+    public int GetMagnitude() {
+        return magnitude;
+    }
+
+    public void SetMagnitude(int magnitude) {
+        this.magnitude = magnitude;
     }
 }
