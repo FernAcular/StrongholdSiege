@@ -35,7 +35,12 @@ public class UnitInteraction : MonoBehaviour {
             }
         }
 
+        //New Magnitude
         strongholdInfo.SetMagnitude(Math.Abs(newMagnitude));
+
+        //Remove Target Outl()ine Color
+        strongholdInfo.GetRenderComponent().material.shader = Shader.Find("Standard");
+
 
         // Remove unit from scene
         Destroy(unit.gameObject);

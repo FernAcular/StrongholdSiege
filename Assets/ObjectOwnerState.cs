@@ -27,4 +27,8 @@ public class ObjectOwnerState : MonoBehaviour {
     public void SetMagnitude(int magnitude) {
         this.magnitude = magnitude;
     }
+
+    public Renderer GetRenderComponent(){
+      return rend;
+    }
 }
