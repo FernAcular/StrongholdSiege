@@ -24,17 +24,17 @@ public class GameEngine : MonoBehaviour {
             source = selected;
 
             //Turn Source StrongHold Green
-            selectedInfo.rend.material.shader = Shader.Find("Outlined/UltimateOutline");
-            selectedInfo.rend.material.SetColor("_FirstOutlineColor", Color.green);
-            selectedInfo.rend.material.SetColor("_SecondOutlineColor", Color.green);
+            selectedInfo.GetRenderComponent().material.shader = Shader.Find("Outlined/UltimateOutline");
+            selectedInfo.GetRenderComponent().material.SetColor("_FirstOutlineColor", Color.green);
+            selectedInfo.GetRenderComponent().material.SetColor("_SecondOutlineColor", Color.green);
 
         } else if (source) {
             ObjectOwnerState sourceInfo = source.GetComponent<ObjectOwnerState>();
 
             //Turn Selected StrongHold Red
-            selectedInfo.rend.material.shader = Shader.Find("Outlined/UltimateOutline");
-            selectedInfo.rend.material.SetColor("_FirstOutlineColor", Color.red);
-            selectedInfo.rend.material.SetColor("_SecondOutlineColor", Color.red);
+            selectedInfo.GetRenderComponent().material.shader = Shader.Find("Outlined/UltimateOutline");
+            selectedInfo.GetRenderComponent().material.SetColor("_FirstOutlineColor", Color.red);
+            selectedInfo.GetRenderComponent().material.SetColor("_SecondOutlineColor", Color.red);
 
             // If source is owned by a player, and not the same as target, send unit
             if (sourceInfo.player != null && source != selected) {
@@ -42,7 +42,7 @@ public class GameEngine : MonoBehaviour {
             }
 
             //Turn Source Back to Neutral
-            sourceInfo.rend.material.shader = Shader.Find("Standard");
+            sourceInfo.GetRenderComponent().material.shader = Shader.Find("Standard");
             source = null;
         }
     }

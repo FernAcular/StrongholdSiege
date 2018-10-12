@@ -6,7 +6,7 @@ public class ObjectOwnerState : MonoBehaviour {
     private int magnitude;
 
     // Rendering Component contains Material Color
-    public Renderer rend;
+    private Renderer rend;
 
     void Start() {
         // Get Rendering Component
@@ -26,5 +26,9 @@ public class ObjectOwnerState : MonoBehaviour {
 
     public void SetMagnitude(int magnitude) {
         this.magnitude = magnitude;
+    }
+
+    public Renderer GetRenderComponent(){
+      return rend;
     }
 }
