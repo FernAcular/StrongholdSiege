@@ -1,3 +1,4 @@
+using TMPro;
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,6 +6,7 @@ public class GameEngine : MonoBehaviour {
 
     public int startingMagnitude = 100;
     public GameObject unitPrefab;
+    public GameObject unitCountPrefab;
     public List<ObjectOwnerState> startingStrongholds;
 
     private Transform source;
@@ -48,8 +50,16 @@ public class GameEngine : MonoBehaviour {
     }
 
     private void SendUnit(ObjectOwnerState sourceInfo, Transform selected) {
+
         // Create unit at source stronghold
         GameObject unit = Instantiate(unitPrefab, source.position, Quaternion.identity);
+        GameObject displayMagnitude = Instantiate(unitCountPrefab, source.position, Quaternion.identity);
+        Vector3 dMPos = displayMagnitude.transform.position;
+
+
+        displayMagnitude.transform.SetParent(unit.transform);
+        displayMagnitude.GetComponent<TextMeshPro>().fontSize = 50;
+        displayMagnitude.transform.position = new Vector3(dMPos.x, 15, dMPos.z);
 
         int strongholdMagnitude = sourceInfo.GetMagnitude();
         int unitMagnitude = strongholdMagnitude / 2;
@@ -62,7 +72,6 @@ public class GameEngine : MonoBehaviour {
             unitInfo.player = sourceInfo.player;
             unit.GetComponent<UnitState>().SetSource(source.gameObject);
             unit.GetComponent<Movement>().SetTarget(selected);
-
             sourceInfo.SetMagnitude(strongholdMagnitude - unitMagnitude);
         }
     }
